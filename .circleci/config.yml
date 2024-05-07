@@ -49,7 +49,7 @@ executors:
           username: $DOCKER_LOGIN
           password: $DOCKER_PASSWORD
       - name: kafka
-        image: wurstmeister/kafka
+        image: kafka
         auth:
           username: $DOCKER_LOGIN
           password: $DOCKER_PASSWORD
