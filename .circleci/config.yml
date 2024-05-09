@@ -48,6 +48,8 @@ executors:
         auth:
           username: $DOCKER_LOGIN
           password: $DOCKER_PASSWORD
+        environment:
+          ALLOW_ANONYMOUS_LOGIN: true
       - name: kafka
         image: docker.io/bitnami/kafka:3.4
         auth:
