@@ -44,21 +44,21 @@ executors:
           username: $DOCKER_LOGIN
           password: $DOCKER_PASSWORD
       - name: zookeeper
-        image: klaytndevops/wurstmeister-zookeeper
+        image: docker.io/bitnami/zookeeper:3.9
         auth:
           username: $DOCKER_LOGIN
           password: $DOCKER_PASSWORD
       - name: kafka
-        image: klaytndevops/wurstmeister-kafka
+        image: docker.io/bitnami/kafka:3.4
         auth:
           username: $DOCKER_LOGIN
           password: $DOCKER_PASSWORD
         environment:
-          KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-          KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://kafka:9094
-          KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://kafka:9094
-          KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
-          KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+          KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
+          KAFKA_CFG_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://kafka:9094
+          KAFKA_CFG_LISTENERS: INSIDE://:9092,OUTSIDE://kafka:9094
+          KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+          KAFKA_CFG_INTER_BROKER_LISTENER_NAME: INSIDE
   darwin-executor: # this executor is for packaging darwin binaries
     working_directory: ~/go/src/github.com/klaytn/klaytn
     macos:
